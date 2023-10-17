@@ -20,7 +20,7 @@ document.getElementById('nextPage').addEventListener('click', () => nextPage());
 
 function performSearch() {
     const searchTerm = searchInput.value.toLowerCase();
-    const filteredCards = yugiohCards.filter((card) => card.name.toLowerCase().includes(searchTerm));
+    const filteredCards = yugiohCards.filter((card) => card.name.toLowerCase().includes(searchTerm.toLowerCase()));
     renderYuGiOhCards(filteredCards);
 }
 
@@ -31,7 +31,7 @@ function createYuGiOhCard(card) {
     const image = document.createElement('img');
     image.src = card.card_images[0].image_url;
     image.alt = card.name;
-    image.classList.add('card-image'); // Added this line to apply styles
+    image.classList.add('card-image');
 
     const title = document.createElement('h5');
     title.classList.add('card-title');
