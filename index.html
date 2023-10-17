@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,26 @@
     <link rel="stylesheet" href="styles.css">
     <title>Yu-Gi-Oh Cards</title>
 </head>
+
 <body>
-    <div class="container mt-5">
+    <div class="container mt-6">
         <h1 class="text-center">Yu-Gi-Oh Cards</h1>
-        <div class="row mb-3">
-            <div class="col">
+        <div class="row mb-8 align-items-center justify-content-center">
+            <div class="col-5"> <!-- Barra de búsqueda ocupa 11 columnas -->
                 <input type="text" id="search" class="form-control" placeholder="Search for a Yu-Gi-Oh card">
             </div>
-            <div class="col">
-                <button id="searchButton" class="btn btn-primary">Search</button>
+            <div class="col-1"> <!-- Botón de búsqueda ocupa 1 columna -->
+                <button id="searchButton" class="btn btn-primary btn-block">Search</button>
             </div>
         </div>
-        <div class="row" id="yugioh-card-list">
+        <div class="row mb-2 align-items-center justify-content-center" id="yugioh-card-list">
             <!-- Yu-Gi-Oh cards will be displayed here -->
+        </div>
+        <div class="row justify-content-center">
+            <ul class="pagination" id="pagination">
+                <li class="page-item" id="prevPage"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item" id="nextPage"><a class="page-link" href="#">Next</a></li>
+            </ul>
         </div>
     </div>
 
@@ -44,4 +52,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

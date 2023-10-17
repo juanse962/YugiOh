@@ -1,6 +1,8 @@
 const yugiohCardList = document.getElementById('yugioh-card-list');
 const apiUrl = "https://db.ygoprodeck.com/api/v7/cardinfo.php";
 let yugiohCards = [];
+let currentPage = 1;
+let numPages = 0;
 
 const searchInput = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
@@ -12,6 +14,9 @@ searchInput.addEventListener('keypress', (event) => {
         performSearch();
     }
 });
+
+document.getElementById('prevPage').addEventListener('click', () => previousPage());
+document.getElementById('nextPage').addEventListener('click', () => nextPage());
 
 function performSearch() {
     const searchTerm = searchInput.value.toLowerCase();
@@ -26,6 +31,7 @@ function createYuGiOhCard(card) {
     const image = document.createElement('img');
     image.src = card.card_images[0].image_url;
     image.alt = card.name;
+    image.classList.add('card-image'); // Added this line to apply styles
 
     const title = document.createElement('h5');
     title.classList.add('card-title');
@@ -50,6 +56,7 @@ function fetchYuGiOhCardData() {
         .then((response) => response.json())
         .then((data) => {
             yugiohCards = data.data;
+            numPages = Math.ceil(yugiohCards.length / 51);
             renderYuGiOhCards(yugiohCards);
         })
         .catch((error) => console.error(error));
@@ -62,6 +69,7 @@ function displayYuGiOhCardDetails(card) {
     modalTitle.textContent = `Yu-Gi-Oh Card Details - ${card.name}`;
 
     modalBody.innerHTML = `
+        <img src="${card.card_images[0].image_url}" alt="${card.name}" class="card-image">
         <p>Type: ${card.type}</p>
         <p>Attribute: ${card.attribute}</p>
         <p>Level/Rank: ${card.level}</p>
@@ -75,10 +83,30 @@ function displayYuGiOhCardDetails(card) {
 
 function renderYuGiOhCards(cards) {
     yugiohCardList.innerHTML = '';
-    cards.forEach((card) => {
+    const startIndex = (currentPage - 1) * 51;
+    const endIndex = startIndex + 51;
+    const paginatedCards = cards.slice(startIndex, endIndex);
+
+    paginatedCards.forEach((card) => {
         const cardElement = createYuGiOhCard(card);
         yugiohCardList.appendChild(cardElement);
     });
+}
+
+function previousPage() {
+    currentPage--;
+    if (currentPage < 1) {
+        currentPage = numPages;
+    }
+    renderYuGiOhCards(yugiohCards);
+}
+
+function nextPage() {
+    currentPage++;
+    if (currentPage > numPages) {
+        currentPage = 1;
+    }
+    renderYuGiOhCards(yugiohCards);
 }
 
 fetchYuGiOhCardData();
