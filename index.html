@@ -10,24 +10,19 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Yu-Gi-Oh Cards</h1>
-        <!-- Search bar -->
         <div class="row mb-3">
             <div class="col">
                 <input type="text" id="search" class="form-control" placeholder="Search for a Yu-Gi-Oh card">
             </div>
+            <div class="col">
+                <button id="searchButton" class="btn btn-primary">Search</button>
+            </div>
         </div>
-        <!-- Yu-Gi-Oh card list will be displayed here -->
         <div class="row" id="yugioh-card-list">
             <!-- Yu-Gi-Oh cards will be displayed here -->
         </div>
-        <!-- Pagination with navigation arrows -->
-        <div class="row justify-content-center">
-            <ul class="pagination" id="pagination">
-            </ul>
-        </div>
     </div>
 
-    <!-- Modal for displaying Yu-Gi-Oh card details -->
     <div class="modal fade" id="yugiohCardModal" tabindex="-1" role="dialog" aria-labelledby="yugiohCardModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
