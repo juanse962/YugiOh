@@ -78,3 +78,14 @@ h1 {
     font-size: 1rem;
     margin: 0.5rem 0;
 }
+@media (max-width: 576px) {
+    .search-container {
+        flex-direction: column;
+    }
+    .col-12 {
+        margin-top: 10px;
+    }
+    .col-12 .form-control {
+        margin-bottom: 10px;
+    }
+}
