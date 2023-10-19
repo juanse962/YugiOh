@@ -7,106 +7,106 @@ let numPages = 0;
 const searchInput = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
 
-searchButton.addEventListener('click', performSearch);
+searchButton.addEventListener('click', realizarBusqueda);
 
 searchInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
-        performSearch();
+        realizarBusqueda();
     }
 });
 
-document.getElementById('prevPage').addEventListener('click', () => previousPage());
-document.getElementById('nextPage').addEventListener('click', () => nextPage());
+document.getElementById('prevPage').addEventListener('click', paginaAnterior);
+document.getElementById('nextPage').addEventListener('click', paginaSiguiente);
 
-function performSearch() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const filteredCards = yugiohCards.filter((card) => card.name.toLowerCase().includes(searchTerm.toLowerCase()));
-    renderYuGiOhCards(filteredCards);
+function realizarBusqueda() {
+    const términoDeBúsqueda = searchInput.value.toLowerCase();
+    const cartasFiltradas = yugiohCards.filter((carta) => carta.name.toLowerCase().includes(términoDeBúsqueda));
+    mostrarCartasYuGiOh(cartasFiltradas);
 }
 
-function createYuGiOhCard(card) {
-    const cardElement = document.createElement('div');
-    cardElement.classList.add('card');
+function crearCartaYuGiOh(carta) {
+    const elementoCarta = document.createElement('div');
+    elementoCarta.className = 'card';
 
-    const image = document.createElement('img');
-    image.src = card.card_images[0].image_url;
-    image.alt = card.name;
-    image.classList.add('card-image');
+    const imagen = document.createElement('img');
+    imagen.src = carta.card_images[0].image_url;
+    imagen.alt = carta.name;
+    imagen.className = 'card-image';
 
-    const title = document.createElement('h5');
-    title.classList.add('card-title');
-    title.textContent = card.name;
+    const título = document.createElement('h5');
+    título.className = 'card-title';
+    título.textContent = carta.name;
 
-    const cardBody = document.createElement('div');
-    cardBody.classList.add('card-body');
+    const cuerpoCarta = document.createElement('div');
+    cuerpoCarta.className = 'card-body';
 
-    cardBody.appendChild(image);
-    cardBody.appendChild(title);
-    cardElement.appendChild(cardBody);
+    cuerpoCarta.appendChild(imagen);
+    cuerpoCarta.appendChild(título);
+    elementoCarta.appendChild(cuerpoCarta);
 
-    cardElement.addEventListener('click', () => {
-        displayYuGiOhCardDetails(card);
+    elementoCarta.addEventListener('click', () => {
+        mostrarDetallesCartaYuGiOh(carta);
     });
 
-    return cardElement;
+    return elementoCarta;
 }
 
-function fetchYuGiOhCardData() {
+function obtenerDatosCartasYuGiOh() {
     fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            yugiohCards = data.data;
+        .then((respuesta) => respuesta.json())
+        .then((datos) => {
+            yugiohCards = datos.data;
             numPages = Math.ceil(yugiohCards.length / 51);
-            renderYuGiOhCards(yugiohCards);
+            mostrarCartasYuGiOh(yugiohCards);
         })
         .catch((error) => console.error(error));
 }
 
-function displayYuGiOhCardDetails(card) {
-    const modalTitle = document.getElementById('yugiohCardModalLabel');
-    const modalBody = document.getElementById('yugiohCardDetails');
+function mostrarDetallesCartaYuGiOh(carta) {
+    const títuloModal = document.getElementById('yugiohCardModalLabel');
+    const cuerpoModal = document.getElementById('yugiohCardDetails');
 
-    modalTitle.textContent = `Yu-Gi-Oh Card Details - ${card.name}`;
+    títuloModal.textContent = `Detalles de la carta de Yu-Gi-Oh - ${carta.name}`;
 
-    modalBody.innerHTML = `
-        <img src="${card.card_images[0].image_url}" alt="${card.name}" class="card-image">
-        <p>Type: ${card.type}</p>
-        <p>Attribute: ${card.attribute}</p>
-        <p>Level/Rank: ${card.level}</p>
-        <p>Attack: ${card.atk}</p>
-        <p>Defense: ${card.def}</p>
-        <p class="card-description">${card.desc}</p>
+    cuerpoModal.innerHTML = `
+        <img src="${carta.card_images[0].image_url}" alt="${carta.name}" class="card-image">
+        <p>Tipo: ${carta.type}</p>
+        <p>Atributo: ${carta.attribute}</p>
+        <p>Nivel/Rango: ${carta.level}</p>
+        <p>Ataque: ${carta.atk}</p>
+        <p>Defensa: ${carta.def}</p>
+        <p class="card-description">${carta.desc}</p>
     `;
 
     $('#yugiohCardModal').modal('show');
 }
 
-function renderYuGiOhCards(cards) {
+function mostrarCartasYuGiOh(cartas) {
     yugiohCardList.innerHTML = '';
-    const startIndex = (currentPage - 1) * 51;
-    const endIndex = startIndex + 51;
-    const paginatedCards = cards.slice(startIndex, endIndex);
+    const inicio = (currentPage - 1) * 51;
+    const fin = inicio + 51;
+    const cartasPaginadas = cartas.slice(inicio, fin);
 
-    paginatedCards.forEach((card) => {
-        const cardElement = createYuGiOhCard(card);
-        yugiohCardList.appendChild(cardElement);
+    cartasPaginadas.forEach((carta) => {
+        const elementoCarta = crearCartaYuGiOh(carta);
+        yugiohCardList.appendChild(elementoCarta);
     });
 }
 
-function previousPage() {
+function paginaAnterior() {
     currentPage--;
     if (currentPage < 1) {
         currentPage = numPages;
     }
-    renderYuGiOhCards(yugiohCards);
+    mostrarCartasYuGiOh(yugiohCards);
 }
 
-function nextPage() {
+function paginaSiguiente() {
     currentPage++;
     if (currentPage > numPages) {
         currentPage = 1;
     }
-    renderYuGiOhCards(yugiohCards);
+    mostrarCartasYuGiOh(yugiohCards);
 }
 
-fetchYuGiOhCardData();
+obtenerDatosCartasYuGiOh();

@@ -1,5 +1,5 @@
 body {
-    background-image: url('https://images5.alphacoders.com/125/1256204.jpg'); /* Reemplaza 'ruta-de-tu-imagen.jpg' con la ruta de tu imagen de fondo */
+    background-image: url('https://images5.alphacoders.com/125/1256204.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -8,13 +8,30 @@ body {
 
 .container {
     max-width: 1200px;
+    margin: 0 auto;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2rem;
-    text-shadow: 2px 2px 2px black; /* Agrega un borde negro alrededor del texto */
+    text-shadow: 2px 2px 2px black;
+}
+
+.header-link {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.col-1{
+    padding-left: 5px;
 }
 
 .card {
