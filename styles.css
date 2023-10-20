@@ -6,32 +6,23 @@ body {
     background-position: center;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
+#search {
+    width: 220px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    text-shadow: 2px 2px 2px black;
+.btn-primary {
+    margin-right: 0.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .header-link {
     text-decoration: none;
     color: #ffffff;
-}
-
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.col-1{
-    padding-left: 5px;
 }
 
 .card {
@@ -74,17 +65,28 @@ h1 {
     margin: 0.5rem 0;
 }
 
+.custom-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
 .card-description {
     font-size: 1rem;
     margin: 0.5rem 0;
 }
+
 @media (max-width: 576px) {
     .search-container {
         flex-direction: column;
     }
+
     .col-12 {
         margin-top: 10px;
     }
+
     .col-12 .form-control {
         margin-bottom: 10px;
     }

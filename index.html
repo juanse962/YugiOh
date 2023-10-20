@@ -8,26 +8,29 @@
     <title>Yu-Gi-Oh Cards</title>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center"><a href="index.html" style="text-decoration: none; color: white; outline: none;">Yu-Gi-Oh Cards</a></h1>
-        <div class="search-container row">
-            <div class="col-12 col-sm-6">
-                <input type="text" id="search" class="form-control" placeholder="Search for a Yu-Gi-Oh card">
+    <header>
+        <nav class="navbar navbar-light fixed-top" style="background-color: #648288;">
+            <div class="container">
+                <a class="navbar-brand" href="#">Yu-Gi-Oh Cards</a>
+                <form class="form-inline">
+                    <input type="text" id="search" class="form-control custom-input" placeholder="Search for a Yu-Gi-Oh card">
+                    <button id="searchButton" class="btn btn-primary">Search</button>
+                </form>
             </div>
-            <div class="col-12 col-sm-1">
-                <button id="searchButton" class="btn btn-primary btn-block">Search</button>
-            </div>
-        </div>
-        <div class="card-list" id="yugioh-card-list">
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <div class="row" id="yugioh-card-list">
             <!-- Yu-Gi-Oh cards will be displayed here -->
         </div>
-        <div class="row justify-content-center pagination-container">
-            <ul class="pagination" id="pagination">
+        <nav aria-label="Pagination" class="mt-4">
+            <ul class="pagination justify-content-center" id="pagination">
                 <li class="page-item" id="prevPage"><a class="page-link" href="#">Previous</a></li>
                 <li class="page-item" id="nextPage"><a class="page-link" href="#">Next</a></li>
             </ul>
-        </div>
-    </div>
+        </nav>
+    </main>
 
     <!-- Modal -->
     <div class="modal fade" id="yugiohCardModal" tabindex="-1" role="dialog" aria-labelledby="yugiohCardModalLabel" aria-hidden="true">
