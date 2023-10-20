@@ -49,8 +49,11 @@ body {
 .card img {
     max-width: 100px;
     max-height: 150px;
-    border: 2px solid #77692b;
     border-radius: 5px;
+}
+
+.card-image {
+    width: 360px;
 }
 
 .card-title {
@@ -75,7 +78,9 @@ body {
     border-radius: 8px;
     font-size: 16px;
 }
-
+.card-image {
+    padding-right: 25px;
+}
 .card-description {
     font-size: 1rem;
     margin: 0.5rem 0;
