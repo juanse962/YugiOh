@@ -24,6 +24,9 @@ body {
     text-decoration: none;
     color: #ffffff;
 }
+.card-list{
+    margin-top: 50px;
+}
 
 .card {
     margin: 10px;
