@@ -5,23 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Agrega estilos personalizados aquí si es necesario */
+    </style>
     <title>Yu-Gi-Oh Cards</title>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-light fixed-top" style="background-color: #648288;">
+        <nav class="navbar navbar-light" style="background-color: #648288;">
             <div class="container">
-                <a class="navbar-brand" href="#">Yu-Gi-Oh Cards</a>
-                <form class="form-inline">
-                    <input type="text" id="search" class="form-control custom-input" placeholder="Search for a Yu-Gi-Oh card">
-                    <button id="searchButton" class="btn btn-primary">Search</button>
+                <a class="navbar-brand" href="index.html">Yu-Gi-Oh Cards</a>
+                <form class="form-inline" id="searchForm">
+                    <input type="text" id="search" class="form-control mr-2 custom-input" placeholder="Search for a Yu-Gi-Oh card">
+                    <button type="button" id="searchButton" class="btn btn-primary">Search</button>
                 </form>
             </div>
         </nav>
     </header>
 
-    <main class="container mt-5">
-        <div class="row" id="yugioh-card-list">
+    <main class="container mt-4">
+        <div class="card-list" id="yugioh-card-list">
             <!-- Yu-Gi-Oh cards will be displayed here -->
         </div>
         <nav aria-label="Pagination" class="mt-4">
