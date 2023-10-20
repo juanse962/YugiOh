@@ -86,6 +86,9 @@ body {
 }
 
 @media (max-width: 576px) {
+    body {
+        background-image: url('https://mfiles.alphacoders.com/992/992203.jpg');
+    }
     .card-list{
         margin-top: 120px;
     }
