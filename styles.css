@@ -87,7 +87,12 @@ body {
 
 @media (max-width: 576px) {
     body {
+        background: none;
         background-image: url('https://mfiles.alphacoders.com/992/992203.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
     }
     .card-list{
         margin-top: 120px;
