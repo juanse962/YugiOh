@@ -52,9 +52,7 @@ body {
     border-radius: 5px;
 }
 
-.card-image {
-    width: 360px;
-}
+
 
 .card-title {
     font-weight: bold;
@@ -80,6 +78,7 @@ body {
 }
 .card-image {
     padding-right: 25px;
+    width: 100%;
 }
 .card-description {
     font-size: 1rem;
@@ -87,6 +86,9 @@ body {
 }
 
 @media (max-width: 576px) {
+    .card-list{
+        margin-top: 120px;
+    }
     .search-container {
         flex-direction: column;
     }
@@ -97,5 +99,11 @@ body {
 
     .col-12 .form-control {
         margin-bottom: 10px;
+    }
+    .card {
+        margin-top: 30px;
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 100%;
     }
 }
